@@ -7,7 +7,7 @@ using System.IO;
 public class TargetControl : MonoBehaviour
 {
     public double G;
-    public float ini_vel;
+    //public float ini_vel;
     public float HEDEG;
     public double time;
     string filename;
@@ -15,7 +15,7 @@ public class TargetControl : MonoBehaviour
     int interval;
     List<List<double>> Target_Pos;
 
-    void csvRead_Pos(string filename, List<List<double>> output)
+    void csvRead(string filename, List<List<double>> output)
     {
         int n = 0;
         output.Clear();
@@ -44,7 +44,7 @@ public class TargetControl : MonoBehaviour
 
         //this.rigid.velocity = new Vector3(ini_vel * Mathf.Sin(HEDEG), ini_vel * Mathf.Cos(HEDEG), 0);
 
-        csvRead_Pos(this.filename, this.Target_Pos);
+        csvRead(this.filename, this.Target_Pos);
 
         Debug.Log(this.Target_Pos.Count);
         Debug.Log(this.Target_Pos[0].Count);
