@@ -59,8 +59,9 @@ public class HeadingControl : MonoBehaviour
         HeadDrawer.positionCount = 2;
         HeadDrawer.startWidth = 10;
         HeadDrawer.endWidth = 10;
-        HeadDrawer.startColor = new Color(255, 0, 0, 0);
-        HeadDrawer.endColor = new Color(255, 0, 0, 0);
+        /*HeadDrawer.startColor = new Color(255, 0, 0, 0);
+        HeadDrawer.endColor = new Color(255, 0, 0, 0);*/
+        HeadDrawer.material.color = Color.blue;
         HeadDrawer.SetPosition(0, M.transform.position);
         HeadDrawer.SetPosition(1, new Vector3(M.transform.position.x + Heading_length * Mathf.Sin((float)Heading[idx][0] * Mathf.PI / 180), M.transform.position.y + Heading_length * Mathf.Cos((float)Heading[idx][0] * Mathf.PI / 180), M.transform.position.z));
         if (idx + interval < this.Heading.Count)
