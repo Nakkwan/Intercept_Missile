@@ -64,6 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\AccControl.cs" />
+    <Compile Include="Assets\DataScript.cs" />
     <Compile Include="Assets\HeadingControl.cs" />
     <Compile Include="Assets\LOSControl.cs" />
     <Compile Include="Assets\MissileControl.cs" />

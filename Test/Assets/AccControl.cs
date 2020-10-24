@@ -6,50 +6,29 @@ using System;
 
 public class AccControl : MonoBehaviour
 {
-    string acc_filename;
-    public double time;
-    int idx = 0;
-    int interval;
-    float G = 9.8f;
+    //string acc_filename;
+    //public double time;
+    //int idx = 0;
+    //int interval;
+    //float G = 9.8f;
 
     public GameObject M;
     public GameObject L;
 
-    List<List<double>> ACC;
+    //List<List<double>> ACC;
 
     private LineRenderer ACCDrawer;
-
-    void csvRead(string filename, List<List<double>> output)
-    {
-        int n = 0;
-        output.Clear();
-
-        StreamReader sr = new StreamReader(System.Environment.CurrentDirectory + '\\' + filename);
-
-        while (!sr.EndOfStream)
-        {
-            string s = sr.ReadLine();
-            string[] data = s.Split(',');
-
-            output.Add(new List<double>());
-            for (int i = 0; i < data.Length; i++)
-            {
-                output[n].Add(Convert.ToDouble(data[i]));
-            }
-            n++;
-        }
-    }
 
     // Start is called before the first frame update
     void Start()
     {
-        this.acc_filename = "Line_of_Sight.txt";
-        ACC = new List<List<double>>();
+        //this.acc_filename = "Line_of_Sight.txt";
+        //ACC = new List<List<double>>();
         //GameObject M = Instantiate(Missile) as GameObject;
         ACCDrawer = GetComponent<LineRenderer>();
-        interval = (int)(Time.deltaTime / time);
+        //interval = (int)(Time.deltaTime / time);
 
-        csvRead(this.acc_filename, this.ACC);
+        //csvRead(this.acc_filename, this.ACC);
     }
 
     // Update is called once per frame
@@ -68,11 +47,6 @@ public class AccControl : MonoBehaviour
 
         Vector3 dist = L_pos[1] - L_pos[0];
         
-        ACCDrawer.SetPosition(1, new Vector3(L_pos[0].x - (float)ACC[idx][0] / G * dist.y, L_pos[0].y + (float)ACC[idx][0] / G * dist.x, L_pos[0].z));
-
-        if (idx + interval < this.ACC.Count)
-        {
-            idx += interval;
-        }
+        ACCDrawer.SetPosition(1, new Vector3(L_pos[0].x - (float)DataScript.ACC[DataScript.idx][0] / DataScript.G * dist.y, L_pos[0].y + (float)DataScript.ACC[DataScript.idx][0] / DataScript.G * dist.x, L_pos[0].z));
     }
 }
