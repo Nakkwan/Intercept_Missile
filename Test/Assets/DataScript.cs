@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEditor.PackageManager;
 using UnityEngine;
+using UnityEngine.UI;
 using System;
 using System.IO;
 
@@ -13,6 +14,7 @@ public class DataScript : MonoBehaviour
     int interval;
     public static float G;
     public double time;
+    public double Intercept_distance;
 
     public static List<List<double>> Target_Pos;
     public static List<List<double>> Missile_Pos;
@@ -26,6 +28,7 @@ public class DataScript : MonoBehaviour
     string H_filename;
     string A_filename;
 
+    GameObject Text_Collision;
     void csvRead(string filename, List<List<double>> output)
     {
         int n = 0;
@@ -44,6 +47,18 @@ public class DataScript : MonoBehaviour
                 output[n].Add(Convert.ToDouble(data[i]));
             }
             n++;
+        }
+    }
+
+    public void Intercept(bool success)
+    {
+        if (success == true)
+        {
+            this.Text_Collision.GetComponent<Text>().text = "Intercept Target";
+        }
+        else
+        {
+            this.Text_Collision.GetComponent<Text>().text = "Intercept Fail";
         }
     }
 
@@ -70,14 +85,29 @@ public class DataScript : MonoBehaviour
         csvRead(this.H_filename, Heading);
         csvRead(this.A_filename, ACC);
         csvRead(this.L_filename, LOS);
+
+        this.Text_Collision = GameObject.Find("Text_Collision");
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (idx + interval < LOS.Count && idx + interval < Target_Pos.Count && idx + interval < Missile_Pos.Count && idx + interval < Heading.Count && idx + interval < ACC.Count)
+/*        if (idx + interval < LOS.Count && idx + interval < Target_Pos.Count && idx + interval < Missile_Pos.Count && idx + interval < Heading.Count && idx + interval < ACC.Count)
         {
             idx += interval;
+        }*/
+
+        if(Math.Sqrt(Math.Pow(Target_Pos[idx][0] - Missile_Pos[idx][0], 2) + Math.Pow(Target_Pos[idx][1] - Missile_Pos[idx][1], 2)) < Intercept_distance)
+        {
+            Intercept(true);
+        }
+        else if (idx + interval < LOS.Count && idx + interval < Target_Pos.Count && idx + interval < Missile_Pos.Count && idx + interval < Heading.Count && idx + interval < ACC.Count)
+        {
+            idx += interval;
+        }
+        else
+        {
+            Intercept(false);
         }
     }
 }

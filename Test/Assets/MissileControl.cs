@@ -46,4 +46,11 @@ public class MissileControl : MonoBehaviour
             idx += interval;
         }*/
     }
+
+/*    private void OnTriggerStay(Collider other)
+    {
+        GameObject Text_Col = GameObject.Find("Text_Collision");
+        Text_Col.GetComponent<SimulDirector>().Intercept();
+    }*/
+
 }
