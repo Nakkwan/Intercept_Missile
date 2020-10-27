@@ -4,6 +4,7 @@ using UnityEngine;
 using System.IO;
 using System;
 using JetBrains.Annotations;
+using UnityEditor;
 
 public class MissileControl : MonoBehaviour
 {
@@ -23,6 +24,8 @@ public class MissileControl : MonoBehaviour
     void Start()
     {
         initial_euler = transform.eulerAngles;
+        Tools.pivotMode = PivotMode.Center;
+        
         //this.pos_filename = "Missile_Traj.txt";
         //interval = (int)(Time.deltaTime / time);
         //this.idx = 0;
