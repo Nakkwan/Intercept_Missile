@@ -87,6 +87,8 @@ public class DataScript : MonoBehaviour
         csvRead(this.L_filename, LOS);
 
         this.Text_Collision = GameObject.Find("Text_Collision");
+
+        Debug.Log("Frame Time = " + Time.deltaTime);
     }
 
     // Update is called once per frame

@@ -42,7 +42,7 @@ public class AccControl : MonoBehaviour
         Vector3[] L_pos;
         L_pos = new Vector3[2];
         L.GetComponent<LineRenderer>().GetPositions(L_pos);
-        ACCDrawer.material.color = Color.green;
+        ACCDrawer.material.color = Color.yellow;
         ACCDrawer.SetPosition(0, L_pos[0]);
 
         Vector3 dist = L_pos[1] - L_pos[0];
