@@ -6,29 +6,15 @@ using System;
 
 public class AccControl : MonoBehaviour
 {
-    //string acc_filename;
-    //public double time;
-    //int idx = 0;
-    //int interval;
-    //float G = 9.8f;
-
     public GameObject M;
     public GameObject L;
-
-    //List<List<double>> ACC;
 
     private LineRenderer ACCDrawer;
 
     // Start is called before the first frame update
     void Start()
     {
-        //this.acc_filename = "Line_of_Sight.txt";
-        //ACC = new List<List<double>>();
-        //GameObject M = Instantiate(Missile) as GameObject;
         ACCDrawer = GetComponent<LineRenderer>();
-        //interval = (int)(Time.deltaTime / time);
-
-        //csvRead(this.acc_filename, this.ACC);
     }
 
     // Update is called once per frame
@@ -37,8 +23,6 @@ public class AccControl : MonoBehaviour
         ACCDrawer.positionCount = 2;
         ACCDrawer.startWidth = 10;
         ACCDrawer.endWidth = 10;
-        //LOSDrawer.startColor = new Color(0, 255, 0, 0);
-        //LOSDrawer.endColor = new Color(0, 255, 0, 0);
         Vector3[] L_pos;
         L_pos = new Vector3[2];
         L.GetComponent<LineRenderer>().GetPositions(L_pos);

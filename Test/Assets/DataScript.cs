@@ -94,10 +94,6 @@ public class DataScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-/*        if (idx + interval < LOS.Count && idx + interval < Target_Pos.Count && idx + interval < Missile_Pos.Count && idx + interval < Heading.Count && idx + interval < ACC.Count)
-        {
-            idx += interval;
-        }*/
 
         if(Math.Sqrt(Math.Pow(Target_Pos[idx][0] - Missile_Pos[idx][0], 2) + Math.Pow(Target_Pos[idx][1] - Missile_Pos[idx][1], 2)) < Intercept_distance)
         {

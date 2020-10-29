@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using UnityEngine;
 
 public class CameraControl : MonoBehaviour
@@ -42,6 +43,9 @@ public class CameraControl : MonoBehaviour
         }else if (Input.GetKeyDown(KeyCode.F3))
         {
             flag = 2;
+        }else if (Input.GetKeyDown(KeyCode.F4))
+        {
+            flag = 3;
         }
 
         if (flag == 0)
@@ -67,7 +71,7 @@ public class CameraControl : MonoBehaviour
             //Mouse  camera angle done.  
 
             //Keyboard commands
-            float f = 0.0f;
+            //float f = 0.0f;
             Vector3 p = GetBaseInput();
 
             if (Input.GetKey(KeyCode.LeftShift))
@@ -98,6 +102,13 @@ public class CameraControl : MonoBehaviour
                 transform.Translate(p);
             }
 
+        }else if (flag == 3)
+        {
+            float distance = (float)Math.Sqrt(Math.Pow(Missile.transform.position.x - Target.transform.position.x, 2) + Math.Pow(Missile.transform.position.y - Target.transform.position.y, 2));
+            transform.position = new Vector3(Missile.transform.position.x,
+                Missile.transform.position.y,
+                 -400);
+            transform.eulerAngles = initial_euler;
         }
     }
 
